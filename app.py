@@ -4,7 +4,7 @@ import pickle
 from googletrans import Translator
 
 st.set_page_config(
-    page_title="ঔষধ প্রস্তাবনা সিস্টেম",
+    page_title="TeleMedicine (Recommended System)",
     page_icon="💊"
 )
 
