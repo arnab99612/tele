@@ -9,8 +9,6 @@ st.set_page_config(
 )
 
 # Define background image CSS
-
-
 page_bg_img = """
 <style>
 [data-testid="stAppViewContainer"]{
@@ -67,8 +65,11 @@ if st.button('প্রস্তাবনা করুন'):
         description = new_df[new_df['Drug_Name'] == med]['Description'].values[0]
         bengali_description = translate_to_bangla(description)
 
-        recommended_df = recommended_df.append({'ঔষধের নাম': bengali_name, 'বর্ণনা': bengali_description},
-                                               ignore_index=True)
+        # Create a new DataFrame with the row to be added
+        new_row = pd.DataFrame({'ঔষধের নাম': [bengali_name], 'বর্ণনা': [bengali_description]})
+        
+        # Use concat to add the new row to the existing DataFrame
+        recommended_df = pd.concat([recommended_df, new_row], ignore_index=True)
 
     # Display the DataFrame as a table
     st.write('**শীর্ষ 5 প্রস্তাবিত ঔষধ:**')
